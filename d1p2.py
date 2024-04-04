@@ -27,15 +27,15 @@ sum = 0
 with open('inputs/calibration_document.txt') as cd:
     for line in cd:
         digits = []
-        for idx in range(len(line)):
+        for idx in range(len(line)):  # Loop through all chars to check if they are digit.
             if line[idx].isdigit():
-                digits.append(line[idx])
+                digits.append(line[idx])  # If so, append them to the digits array
             elif line[idx] in 'otfsen':  # one, two, three, four, five, six, seven, eight, nine
-                number = check_number_exists(line, idx)
+                number = check_number_exists(line, idx)  # else, check if it contains a written out number
                 if number != '0':
                     digits.append(number)     
-        number = digits[0]
+        number = digits[0]  # Then take the first and last element out of that array.
         number += digits[-1]
-        sum += int(number)
+        sum += int(number)  # And add this calibration value to the sum of all values.
 
 print(sum)              
